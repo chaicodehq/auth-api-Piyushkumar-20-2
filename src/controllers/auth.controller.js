@@ -12,14 +12,16 @@ import { signToken } from '../utils/jwt.js';
  * 4. Return 201 with { user } (password excluded by default)
  */
 export async function register(req, res, next) {
-  try {
+  try { 
     // Your code here
+    
   } catch (error) {
     next(error);
   }
 }
 
 /**
+ * 
  * TODO: Login user
  *
  * 1. Extract email, password from req.body
@@ -33,6 +35,7 @@ export async function register(req, res, next) {
 export async function login(req, res, next) {
   try {
     // Your code here
+
   } catch (error) {
     next(error);
   }
