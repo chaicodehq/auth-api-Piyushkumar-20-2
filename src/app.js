@@ -26,8 +26,8 @@ export function createApp() {
     res.status(200)
   });
 
-  app.get('/api/auth' , authRoutes);
-  app.get('/api/user', userRoutes);
+  app.use('/api/auth' , authRoutes);
+  app.use('/api/users', userRoutes);
 
   app.use(notFound);
   app.use(errorHandler);

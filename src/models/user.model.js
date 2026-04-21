@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enums: ['user', 'admin'],
+      enum: ['user', 'admin'],
       default: 'user'
     }
   },
@@ -67,6 +67,17 @@ const userSchema = new mongoose.Schema(
  * });
  */
 
+userSchema.pre('save', async function(next){
+  if(!this.isModified('password'))
+    return next();
+  try {
+    this.password = await bcrypt.hash(this.password, 10)
+    next();
+  } catch (error) {
+    next (error);
+  }
+
+});
 // TODO: Create and export the User model
 
 export const User = mongoose.model('User', userSchema);
